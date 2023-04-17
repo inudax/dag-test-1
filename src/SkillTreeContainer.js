@@ -54,6 +54,7 @@ function SkillTreeContainer({d4class,skills,lines, total, increase, decrease}) {
 
 
         return <SkillButton
+                key={value + value.square}
                 d4class = {d4class}
                 skill = {value}
                 total={total}

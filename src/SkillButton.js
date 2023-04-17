@@ -2,20 +2,41 @@ import React from 'react'
 import { useState, useEffect, memo } from "react";
 import StateStore from "./StateStore";
 
-function SkillButton({d4class, skill, total, increase, decrease, tiersArray, decTiers, incTiers}) {
+function SkillButton({key, d4class, skill, total, increase, decrease, tiersArray, decTiers, incTiers}) {
+
+   const tierRequire = [
+      0,
+      2,
+      6,
+      11,
+      21,
+      38,
+      65,
+   ];
 
 
     const max = skill.max;
+    
+        const skilltier = skill.tier.num;
+        const skilltiername = skill.tier.name;
+        const currTierPoint = tiersArray[skilltier-1];
+
 
     const [count, setCount] = useState(0);
 
 
     const increment = () => {
 
-      if (count < max && total >= skill.pointsreq && skill.depend === undefined ) {
+      console.log('XX depend ' + skill.depend);
+      console.log('XX id ' + skill.id);
+
+      if (count < max && total >= skill.pointsreq && skill.depend === undefined && skill.excluded === false ) {
+
             setCount(state => state + 1);
             increase(total);
             incTiers(skill.tier.name);
+
+            
 
       }
     }
@@ -26,11 +47,58 @@ function SkillButton({d4class, skill, total, increase, decrease, tiersArray, dec
     }
     const decrement = (e) => {
         e.preventDefault()
-        const highestIndex = tiersArray.findLastIndex((e) => e > 0)
+        const highestreachedtier = tiersArray.findLastIndex((e) => e > 0) + 1
 
+        console.log('highestreachedtier  ' + highestreachedtier);
+
+        console.log('highestreachedtierREQ  ' + tierRequire[highestreachedtier-1]);
+      
+        if (count > 0 && total > tierRequire[highestreachedtier-1] + 1){
           dec();
+        } else if (count === 1 && currTierPoint === 1 && highestreachedtier === skilltier) {
+          dec();
+        }
+        
 
     }
+
+
+    useEffect(() => {
+      if (total >= skill.pointsreq && skill.depend === undefined) {
+        skill.available = true;
+      }
+      if (total < skill.pointsreq) {
+        skill.available = false;
+      }
+    }, [total]);
+
+
+
+  useEffect(() => {
+        if (count > 0) {
+
+            if (skill.dependency) {
+              skill.dependency(true);
+              console.log('Update dependency');
+            }
+            
+        }
+
+    }, [count, skill.available]);
+
+
+    useEffect(() => {
+      if (count > 0) {
+
+          if (skill.has_exclude) {
+            skill.to_exclude(true);
+            console.log('Update exclusion');
+          }
+          
+      }
+
+  }, [count, skill.available]);
+
 
 
 
@@ -46,7 +114,7 @@ function SkillButton({d4class, skill, total, increase, decrease, tiersArray, dec
               id='1'
               onClick={increment}
               onContextMenu={(e) => decrement(e)}
-          ><p>{skill.square} --- {skill.id} --- {count}/{max} --- </p>
+          ><p>{skill.square}:{key} --- {skill.id} --- {count}/{max} --- T{skilltier}/{currTierPoint}</p>
       </button>
 
     
