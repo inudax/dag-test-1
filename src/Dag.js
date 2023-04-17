@@ -17,13 +17,13 @@ function Dag() {
 
     const total = StateStore((state) => state.total);
   
-    const remove = StateStore((state) => state.remove);
-   
     const increase = StateStore((state) => state.increase);
+   
+    const remove = StateStore((state) => state.remove);
   
     const decrease = StateStore((state) => state.decrease);
   
-    const addTotal = StateStore((state) => state.addTotal);
+ 
 
 
 

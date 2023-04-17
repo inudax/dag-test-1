@@ -104,8 +104,15 @@ function SkillButton({key, d4class, skill, total, increase, decrease, tiersArray
       }
     }
 
-  }, [count, skill.available]);
+    }, [count, skill.available]);
 
+
+
+    useEffect(() => {
+      if (total === 0) {
+          setCount(0);
+      }
+  }, [total]);
 
 
 

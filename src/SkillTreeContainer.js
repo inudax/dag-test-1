@@ -3,11 +3,17 @@ import SkillButton from './SkillButton'
 
 import { memo, useState, useEffect } from "react"
 
+import StateStore from "./StateStore";
+
+
 
 
 function SkillTreeContainer({d4class,skills,lines, total, increase, decrease}) {
 
     const [tiers, setTiers] = useState('');
+    
+
+
 
     useEffect(() => {
         if (total === 0) {
@@ -32,8 +38,14 @@ function SkillTreeContainer({d4class,skills,lines, total, increase, decrease}) {
         });
     }
 
+    
+    const remove = StateStore((state) => state.remove);
 
     return (
+
+        
+
+        
     <div className="SkillTreeContainer">
         <div>{d4class}</div>
 
@@ -49,6 +61,13 @@ function SkillTreeContainer({d4class,skills,lines, total, increase, decrease}) {
         {tiersArray.map((value) => {
             return <div>tiers - {value}</div>
         })}
+
+
+        <button
+ onClick={() => { remove() }}
+          ><p>RESET ALL</p>
+      </button>
+
 
 
         {skills.map((value) => {
