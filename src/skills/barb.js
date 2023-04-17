@@ -154,6 +154,181 @@ const barbskills = [
         available: false,
         complete: false,
     },
+ 
+ 
+    {
+        square: 9,
+        tier: {
+            name: "tier3",
+            num: 3,
+        },
+        id: 'LINKG-1',
+        talent: true,
+        max: 3,
+        pointsreq: 6,
+        available: false,
+        complete: false,
+        dependency: function (arg) {
+            if (arg === true) {
+                barbskills[11-1].depend = undefined;
+                barbskills[11-1].available = true;
+            } else if (arg === false) {
+                barbskills[11-1].depend = true;
+                barbskills[11-1].available = false;
+            }
+        },
+    },
+    {
+        square: 10,
+        tier: {
+            name: "tier3",
+            num: 3,
+        },
+        id: 'LINKG-2',
+        talent: true,
+        max: 3,
+        pointsreq: 6,
+        available: false,
+        complete: false,
+        dependency: function (arg) {
+            if (arg === true) {
+                barbskills[11-1].depend = undefined;
+                barbskills[11-1].available = true;
+                barbskills[12-1].depend = undefined;
+                barbskills[12-1].available = true;
+            } else if (arg === false) {
+                barbskills[11-1].depend = true;
+                barbskills[11-1].available = false;
+                barbskills[12-1].depend = undefined;
+                barbskills[12-1].available = true;
+            }
+        },
+    },
+    {
+        square: 11,
+        tier: {
+            name: "tier3",
+            num: 3,
+        },
+        id: 'LINKG-12',
+        talent: true,
+        max: 3,
+        pointsreq: 6,
+        available: false,
+        complete: false,
+        depend: true,
+    },
+    {
+        square: 12,
+        tier: {
+            name: "tier3",
+            num: 3,
+        },
+        id: 'LINKG-2-1',
+        talent: true,
+        max: 3,
+        pointsreq: 6,
+        available: false,
+        complete: false,
+        depend: true,
+    },
+
+
+
+    {
+        square: 13,
+        tier: {
+            name: "tier4",
+            num: 4,
+        },
+        id: 'ULTI-1',
+        talent: true,
+        max: 1,
+        pointsreq: 11,
+        available: false,
+        complete: false,
+        has_exclude: true,
+        excluded: false,
+        to_exclude: function (arg) {
+            if (arg === true) {
+                barbskills[14-1].excluded = true;
+                barbskills[14-1].available = false;
+                barbskills[15-1].excluded = true;
+                barbskills[15-1].available = false;
+            } else if (arg === false) {
+                barbskills[14-1].excluded = false;
+                barbskills[14-1].available = true;
+                barbskills[15-1].excluded = false;
+                barbskills[15-1].available = true;
+            }
+        },
+    },
+    {
+        square: 14,
+        tier: {
+            name: "tier4",
+            num: 4,
+        },
+        id: 'ULTI-2',
+        talent: true,
+        max: 1,
+        pointsreq: 11,
+        available: false,
+        complete: false,
+        has_exclude: true,
+        excluded: false,
+        to_exclude: function (arg) {
+            if (arg === true) {
+                barbskills[13-1].excluded = true;
+                barbskills[13-1].available = false;
+                barbskills[15-1].excluded = true;
+                barbskills[15-1].available = false;
+            } else if (arg === false) {
+                barbskills[13-1].excluded = false;
+                barbskills[13-1].available = true;
+                barbskills[15-1].excluded = false;
+                barbskills[15-1].available = true;
+            }
+        },
+    },
+    {
+        square: 15,
+        tier: {
+            name: "tier4",
+            num: 4,
+        },
+        id: 'ULTI-3',
+        talent: true,
+        max: 1,
+        pointsreq: 11,
+        available: false,
+        complete: false,
+        has_exclude: true,
+        excluded: false,
+        to_exclude: function (arg) {
+            if (arg === true) {
+                barbskills[13-1].excluded = true;
+                barbskills[13-1].available = false;
+                barbskills[14-1].excluded = true;
+                barbskills[14-1].available = false;
+            } else if (arg === false) {
+                barbskills[13-1].excluded = false;
+                barbskills[13-1].available = true;
+                barbskills[14-1].excluded = false;
+                barbskills[14-1].available = true;
+            }
+        },
+    },
+
+
+
+
+
+
+
+
+
+
 ]
 
 export { barbskills };

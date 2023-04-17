@@ -15,6 +15,7 @@ function SkillTreeContainer({d4class,skills,lines, total, increase, decrease}) {
                 tier1: 0,
                 tier2: 0,
                 tier3: 0,
+                tier4: 0,
             });
         }
     }, [total]);

@@ -29,15 +29,13 @@ function SkillButton({key, d4class, skill, total, increase, decrease, tiersArray
 
       console.log('XX depend ' + skill.depend);
       console.log('XX id ' + skill.id);
+      console.log('XX excluded ' + skill.excluded);
 
-      if (count < max && total >= skill.pointsreq && skill.depend === undefined && skill.excluded === false ) {
+      if (count < max && total >= skill.pointsreq && skill.depend === undefined && skill.excluded != true ) {
 
             setCount(state => state + 1);
             increase(total);
             incTiers(skill.tier.name);
-
-            
-
       }
     }
     const dec = () => {
@@ -88,14 +86,23 @@ function SkillButton({key, d4class, skill, total, increase, decrease, tiersArray
 
 
     useEffect(() => {
+      if (skill.has_exclude) {
       if (count > 0) {
 
-          if (skill.has_exclude) {
+          
             skill.to_exclude(true);
             console.log('Update exclusion');
-          }
           
+          
+      } else if (count === 0) {
+
+        
+          skill.to_exclude(false);
+          console.log('Update exclusion');
+        
+
       }
+    }
 
   }, [count, skill.available]);
 
