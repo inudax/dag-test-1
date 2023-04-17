@@ -29,7 +29,10 @@ function Dag() {
 
 
   return (
+
+
     <div className="Dag">
+      
       <SkillTreeContainer
         d4class = {d4classes.Barbarian}
         skills = {barbskills}

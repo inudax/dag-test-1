@@ -2,20 +2,42 @@
 const barbskills = [
     {
         square: 1,
-        id: "paHoly1",
+        tier: {
+            name: "tier1",
+            num: 1,
+        },
+        id: "Flay",
         talent: true,
         max: 5,
         pointsreq: 0,
         available: true,
         complete: false,
-        tooltip: "Seals of the Pure"
+        tooltip: "Flay"
     },
     {
         square: 2,
-        id: 'paHoly2',
+        tier: {
+            name: "tier1",
+            num: 1,
+        },
+        id: "Frenzy",
         talent: true,
         max: 5,
-        pointsreq: 5,
+        pointsreq: 0,
+        available: true,
+        complete: false,
+        tooltip: "Frenzy"
+    },
+    {
+        square: 3,
+        tier: {
+            name: "tier2",
+            num: 2,
+        },
+        id: 'Whirwhind',
+        talent: true,
+        max: 5,
+        pointsreq: 2,
         available: false,
         complete: false,
         dependency: function (arg) {
@@ -27,18 +49,74 @@ const barbskills = [
                 barbskills[3].available = false;
             }
         },
-        line: "pa-1"
     },
     {
-        square: 3,
-        id: 'paHoly3',
+        square: 4,
+        tier: {
+            name: "tier2",
+            num: 2,
+        },
+        id: 'PP',
         talent: true,
-        max: 5,
-        pointsreq: 10,
+        max: 3,
+        pointsreq: 2,
+        available: false,
+        complete: false,
+    },
+    {
+        square: 5,
+        tier: {
+            name: "tier2",
+            num: 2,
+        },
+        id: 'E-WW',
+        talent: true,
+        max: 1,
+        pointsreq: 2,
         available: false,
         complete: false,
         depend: true,
-        line: "pa-2"
+    },
+    {
+        square: 6,
+        tier: {
+            name: "tier2",
+            num: 2,
+        },
+        id: 'E-WW-1',
+        talent: true,
+        max: 1,
+        pointsreq: 2,
+        available: false,
+        complete: false,
+        depend: true,
+    },
+    {
+        square: 7,
+        tier: {
+            name: "tier2",
+            num: 2,
+        },
+        id: 'E-WW-2',
+        talent: true,
+        max: 1,
+        pointsreq: 2,
+        available: false,
+        complete: false,
+        depend: true,
+    },
+    {
+        square: 8,
+        tier: {
+            name: "tier3",
+            num: 3,
+        },
+        id: 'Ground Stomp',
+        talent: true,
+        max: 5,
+        pointsreq: 6,
+        available: false,
+        complete: false,
     },
 ]
 
