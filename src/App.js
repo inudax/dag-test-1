@@ -1,7 +1,9 @@
+import Dag from './Dag'
+
 function App() {
   return (
     <div className="App">
-      EMPTY-REACT
+      <Dag/>
     </div>
   );
 }
