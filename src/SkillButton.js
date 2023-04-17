@@ -1,6 +1,28 @@
 import React from 'react'
+import { useState, useEffect, memo } from "react";
+import StateStore from "./StateStore";
 
-function SkillButton({d4class,skill}) {
+function SkillButton({d4class,skill, total, increase, decrease}) {
+
+
+    const max = 50;
+
+    const [count, setCount] = useState(0);
+
+
+    const increment = () => {
+            setCount(state => state + 1);
+    }
+    const dec = () => {
+        setCount(state => state - 1);
+    }
+    const decrement = (e) => {
+        e.preventDefault()
+            dec();
+    }
+
+
+
   return (
 
 
@@ -8,11 +30,13 @@ function SkillButton({d4class,skill}) {
             tooltip='button'
             className='style'
             id='1'
-        ><p>{skill.id}</p>
+            onClick={increment}
+            onContextMenu={(e) => decrement(e)}
+        ><p>{skill.id} --- {count}/{max} --- </p>
     </button>
 
 
   )
 }
 
-export default SkillButton
+export default memo(SkillButton)
